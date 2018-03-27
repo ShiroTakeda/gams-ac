@@ -4,7 +4,7 @@
 ;; Maintainer: Shiro Takeda
 ;; Copyright (C) 2018 Shiro Takeda
 ;; First Created: Tue Jan 23, 2018 
-;; Time-stamp: <2018-03-27 15:05:16 st>
+;; Time-stamp: <2018-03-27 15:34:21 st>
 ;; Version: 0.9
 ;; Keywords: GAMS, auto-complete
 ;; URL: http://shirotakeda.org/en/gams/gams-mode/
@@ -49,6 +49,9 @@
 (eval-when-compile (require 'cl))
 (require 'auto-complete)
 (require 'gams-mode)
+
+(defconst gams-ac-version "0.9"
+  "Version of `gams-ac.el'.")
 
 (defvar gams-ac-source-user-keywords-list nil
   "A list of user keywords.")
