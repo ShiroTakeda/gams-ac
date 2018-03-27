@@ -2,15 +2,15 @@
 Author: Shiro Takeda
 Maintainer: Shiro Takeda
 First-created: 2018-03-26.
-Time-stamp: <2018-03-27 15:37:15 st>
+Time-stamp: <2018-03-27 21:33:58 st>
 -->
 
 What is gams-ac.el?
 ============================================================
 
 This lisp provides an auto-complete source for GAMS mode.
-- [gams-mode](https://github.com/ShiroTakeda/gams-mode).
-- [auto-complete](http://cx4a.org/software/auto-complete/).
+- [gams-mode](https://github.com/ShiroTakeda/gams-mode/).
+- [auto-complete](https://github.com/auto-complete/auto-complete/).
 
 
 Screenshot
