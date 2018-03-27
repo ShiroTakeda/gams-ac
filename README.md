@@ -2,15 +2,15 @@
 Author: Shiro Takeda
 Maintainer: Shiro Takeda
 First-created: 2018-03-26.
-Time-stamp: <2018-03-27 14:56:24 st>
+Time-stamp: <2018-03-27 15:12:06 st>
 -->
 
 What is gams-ac.el?
 ============================================================
 
-This lisp provides a auto-complete source for GAMS mode.
-+ [gams-mode](https://github.com/ShiroTakeda/gams-mode).
-+ [auto-complete](http://cx4a.org/software/auto-complete/).
+This lisp provides an auto-complete source for GAMS mode.
+- [gams-mode](https://github.com/ShiroTakeda/gams-mode).
+- [auto-complete](http://cx4a.org/software/auto-complete/).
 
 
 Screenshot
@@ -22,22 +22,21 @@ Screenshot
 Installation
 =============
 
-First, ensure `auto-complete` and `gams-mode` are installed: I recommend
-using packages from [MELPA][melpa]. 
+First, you need auto-complete mode (`auto-complete.el`) and GAMS mode
+(`gams-mode.el`). I recommend using packages from [MELPA][melpa].
 
-You'll need both `auto-complete` and `slime` to be enabled and working, so
-please consult the corresponding documentation is you have any trouble
-with this.
+You can install `gams-ac` from [MELPA][melpa]. If you choose not to use MELPA,
+you can install from GitHub ([gams-ac](https://github.com/ShiroTakeda/gams-ac)).
 
-Next, install `gams-ac`. If you choose not to use the convenient package
-in [MELPA][melpa], you'll need to add the directory containing
-`gams-ac.el` to your `load-path`, and then `(require 'gams-ac)`.
+To use `gams-ac`, put the following code in your init.el to
 
-`gams-ac` provides a couple of `gams-mode`-specific completion sources, so
-`auto-complete` needs to be told to use them when `gams-mode` is
-active. To do this, put the following code in your emacs init file to
+    (require 'gams-ac)
+    (gams-ac-after-init-setup)
+
+If you install `gams-ac` from MELPA, just put the following code.
 
     (gams-ac-after-init-setup)
+    
 
 Usage
 =====
