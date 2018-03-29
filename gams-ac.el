@@ -4,10 +4,12 @@
 ;; Maintainer: Shiro Takeda
 ;; Copyright (C) 2018 Shiro Takeda
 ;; First Created: Tue Jan 23, 2018
-;; Time-stamp: <2018-03-29 13:46:11 st>
+;; Time-stamp: <2018-03-30 01:07:32 st>
 ;; Version: 1.0
-;; Keywords: GAMS, gams-mode, auto-complete
+;; Keywords: 
 ;; URL: https://github.com/ShiroTakeda/gams-ac
+;; Package-Requires: ((auto-complete "1.0") (gams-mode "4.0"))
+
 ;; This file is not part of any Emacs.
 
 ;; This program is free software; you can redistribute it and/or modify
