@@ -4,9 +4,9 @@
 ;; Maintainer: Shiro Takeda
 ;; Copyright (C) 2018 Shiro Takeda
 ;; First Created: Tue Jan 23, 2018
-;; Time-stamp: <2018-03-30 01:07:32 st>
+;; Time-stamp: <2018-03-30 01:28:00 st>
 ;; Version: 1.0
-;; Keywords: 
+;; Keywords: languages, tools, gams-mode, auto-complete
 ;; URL: https://github.com/ShiroTakeda/gams-ac
 ;; Package-Requires: ((auto-complete "1.0") (gams-mode "4.0"))
 
