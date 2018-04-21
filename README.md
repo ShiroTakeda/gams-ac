@@ -2,7 +2,7 @@
 Author: Shiro Takeda
 Maintainer: Shiro Takeda
 First-created: 2018-03-26.
-Time-stamp: <2018-04-21 14:39:25 st>
+Time-stamp: <2018-04-21 14:58:36 st>
 -->
 
 What is gams-ac.el?
@@ -50,6 +50,16 @@ If you want to add more keywords, for example, "computable", "general",
     (setq gams-ac-source-user-keywords-list
             '("computable" "general" "equilibrium"))
 
+
+Candidates for completion
+=====
+
+Candidates for completion are created from values of variables
+`gams-statement-alist` and `gams-dollar-control-alist`. So if you want a certain
+command to appear in candidates, you first needs to register the command by
+executing `gams-insert-statement` (C-cC-k) or `gams-insert-dollar-control`
+(C-cC-d). Or just register the command to `gams-ac-source-user-keywords-list`
+above.
 
 
 [melpa]: http://melpa.org

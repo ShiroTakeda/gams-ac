@@ -4,8 +4,8 @@
 ;; Maintainer: Shiro Takeda
 ;; Copyright (C) 2018 Shiro Takeda
 ;; First Created: Tue Jan 23, 2018
-;; Time-stamp: <2018-04-21 14:43:15 st>
-;; Version: 1.0
+;; Time-stamp: <2018-04-21 14:51:02 st>
+;; Version: 1.1
 ;; Keywords: languages, tools, gams-mode, auto-complete
 ;; URL: https://github.com/ShiroTakeda/gams-ac
 ;; Package-Requires: ((auto-complete "1.0") (gams-mode "4.0"))
@@ -53,40 +53,37 @@
 (require 'gams-mode)
 
 (defvar gams-ac-source-user-keywords-list nil
-  "A list of user keywords.")
+  "A list of user keywords for auto-complete source in GAMS mode.")
 
-;; User keywords (command, option or variable)
 (defun gams-ac-user-keywords ()
   gams-ac-source-user-keywords-list)
 (defvar gams-ac-source-user-keywords
   '((candidates . gams-ac-user-keywords)
-    (cache)))
+    (cache))
+  "Source for user keywords, eg. command, option and variable")
 
-;; Standard GAMS commands created from gams-statement-alist.
-;;
 ;; `gams-statement-alist' and `gams-alist-to-list' are defined in gams-mode.el.
 (defun gams-ac-basic-commands ()
   (gams-alist-to-list gams-statement-alist))
 (defvar gams-ac-source-basic-commands
   '((candidates . gams-ac-basic-commands)
-    (cache)))
+    (cache))
+  "Source for standard GAMS commands created from gams-statement-alist.")
 
-;; Dollar control commands created from gams-dollar-control-alist.
-;;
 ;; `gams-dollar-control-alist' and `gams-alist-to-list' are defined in gams-mode.el.
 (defun gams-ac-dollar-control ()
   (mapcar #'(lambda (x) (concat "$" x)) 
           (gams-alist-to-list gams-dollar-control-alist)))
 (defvar gams-ac-source-dollar-control
   '((candidates . gams-ac-dollar-control)
-    (cache)))
+    (cache))
+  "Source for GAMS dollar control commands created from gams-dollar-control-alist.")
 
-;; A variable of auto-complete source for GAMS mode.
-(defvar ac-source-gams nil)
-(setq gams-ac-sources
+(defvar gams-ac-sources
   '(gams-ac-source-user-keywords
     gams-ac-source-basic-commands
-    gams-ac-source-dollar-control))
+    gams-ac-source-dollar-control)
+  "Auto-complete source for GAMS mode.")
 
 (defun gams-ac-setup ()
   "Set up `auto-complete' for GAMS mode."
