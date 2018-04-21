@@ -4,11 +4,11 @@
 ;; Maintainer: Shiro Takeda
 ;; Copyright (C) 2018 Shiro Takeda
 ;; First Created: Tue Jan 23, 2018
-;; Time-stamp: <2018-04-21 15:01:04 st>
+;; Time-stamp: <2018-04-21 15:03:04 st>
 ;; Version: 1.1
 ;; Keywords: languages, tools, gams-mode, auto-complete
 ;; URL: https://github.com/ShiroTakeda/gams-ac
-;; Package-Requires: ((auto-complete "1.0") (gams-mode "4.0"))
+;; Package-Requires: ((emacs "24") (auto-complete "1.0") (gams-mode "4.0"))
 
 ;; This file is not part of any Emacs.
 
