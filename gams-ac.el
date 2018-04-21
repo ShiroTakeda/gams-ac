@@ -1,10 +1,10 @@
-;;; gams-ac.el --- auto-complete source file for GAMS mode.
+;;; gams-ac.el --- auto-complete source file for GAMS mode -*- lexical-binding: t -*-
 
 ;; Author: Shiro Takeda
 ;; Maintainer: Shiro Takeda
 ;; Copyright (C) 2018 Shiro Takeda
 ;; First Created: Tue Jan 23, 2018
-;; Time-stamp: <2018-03-30 01:28:00 st>
+;; Time-stamp: <2018-04-21 14:43:15 st>
 ;; Version: 1.0
 ;; Keywords: languages, tools, gams-mode, auto-complete
 ;; URL: https://github.com/ShiroTakeda/gams-ac
@@ -43,7 +43,7 @@
 ;; If you want to add more keywords, for example, "computable", "general",
 ;; "equilibrium", Add the following into your init.el.
 ;;
-;;  (setq gams-ac-source-user-keywords
+;;  (setq gams-ac-source-user-keywords-list
 ;;         '("computable" "general" "equilibrium"))
 
 ;;; Code:
@@ -52,18 +52,41 @@
 (require 'auto-complete)
 (require 'gams-mode)
 
-(defconst gams-ac-version "1.0"
-  "Version of `gams-ac.el'.")
-
 (defvar gams-ac-source-user-keywords-list nil
   "A list of user keywords.")
 
+;; User keywords (command, option or variable)
+(defun gams-ac-user-keywords ()
+  gams-ac-source-user-keywords-list)
+(defvar gams-ac-source-user-keywords
+  '((candidates . gams-ac-user-keywords)
+    (cache)))
+
+;; Standard GAMS commands created from gams-statement-alist.
+;;
+;; `gams-statement-alist' and `gams-alist-to-list' are defined in gams-mode.el.
+(defun gams-ac-basic-commands ()
+  (gams-alist-to-list gams-statement-alist))
+(defvar gams-ac-source-basic-commands
+  '((candidates . gams-ac-basic-commands)
+    (cache)))
+
+;; Dollar control commands created from gams-dollar-control-alist.
+;;
+;; `gams-dollar-control-alist' and `gams-alist-to-list' are defined in gams-mode.el.
+(defun gams-ac-dollar-control ()
+  (mapcar #'(lambda (x) (concat "$" x)) 
+          (gams-alist-to-list gams-dollar-control-alist)))
+(defvar gams-ac-source-dollar-control
+  '((candidates . gams-ac-dollar-control)
+    (cache)))
+
 ;; A variable of auto-complete source for GAMS mode.
+(defvar ac-source-gams nil)
 (setq gams-ac-sources
   '(gams-ac-source-user-keywords
     gams-ac-source-basic-commands
-    gams-ac-source-dollar-control
-    ))
+    gams-ac-source-dollar-control))
 
 (defun gams-ac-setup ()
   "Set up `auto-complete' for GAMS mode."
@@ -72,36 +95,7 @@
 (defun gams-ac-after-init-setup ()
   "A function that should be executed in the init file."
   (add-to-list 'ac-modes 'gams-mode)
-  (add-hook 'gams-mode-hook 'gams-ac-setup)
-  )
-
-;; keywords
-(defmacro gams-ac-define-dictionary-source (name list)
-  "Macro for creating `auto-complete' sources NAME from LIST."
-  `(defconst ,name
-     '((candidates . (lambda () (all-completions ac-prefix ,list)))
-       )))
-
-(defsubst gams-ac-attach-$ (list)
-  "Macro for attaching $ mark to each element of LIST."
-  (mapcar #'(lambda (x) (concat "$" x)) list))
-
-;; user keywords (command, option or varoable)
-(gams-ac-define-dictionary-source
- gams-ac-source-user-keywords
- gams-ac-source-user-keywords-list)
-
-;; standard GAMS commands created from gams-statement-alist.
-(gams-ac-define-dictionary-source
- gams-ac-source-basic-commands
- (gams-alist-to-list gams-statement-alist))
-
-;; dollar control commands created from gams-dollar-control-alist.
-(gams-ac-define-dictionary-source
- gams-ac-source-dollar-control
- (gams-ac-attach-$
-  (gams-alist-to-list gams-dollar-control-alist)))
-
+  (add-hook 'gams-mode-hook 'gams-ac-setup))
 
 (provide 'gams-ac)
 

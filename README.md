@@ -2,7 +2,7 @@
 Author: Shiro Takeda
 Maintainer: Shiro Takeda
 First-created: 2018-03-26.
-Time-stamp: <2018-03-29 13:47:53 st>
+Time-stamp: <2018-04-21 14:39:25 st>
 -->
 
 What is gams-ac.el?
@@ -47,7 +47,7 @@ in which `gams-mode` is active and `auto-complete` is enabled.
 If you want to add more keywords, for example, "computable", "general",
 "equilibrium", Add the following into your init.el.
 
-    (setq gams-ac-source-user-keywords
+    (setq gams-ac-source-user-keywords-list
             '("computable" "general" "equilibrium"))
 
 
