@@ -4,7 +4,7 @@
 ;; Maintainer: Shiro Takeda
 ;; Copyright (C) 2018 Shiro Takeda
 ;; First Created: Tue Jan 23, 2018
-;; Time-stamp: <2018-04-21 15:03:04 st>
+;; Time-stamp: <2018-04-23 18:24:30 st>
 ;; Version: 1.1
 ;; Keywords: languages, tools, gams-mode, auto-complete
 ;; URL: https://github.com/ShiroTakeda/gams-ac
@@ -48,7 +48,6 @@
 
 ;;; Code:
 
-(eval-when-compile (require 'cl))
 (require 'auto-complete)
 (require 'gams-mode)
 
@@ -85,10 +84,12 @@
     gams-ac-source-dollar-control)
   "Auto-complete source for GAMS mode.")
 
+;;;###autoload
 (defun gams-ac-setup ()
   "Set up `auto-complete' for GAMS mode."
   (setq ac-sources (append gams-ac-sources ac-sources)))
 
+;;;###autoload
 (defun gams-ac-after-init-setup ()
   "A function that should be executed in the init file."
   (add-to-list 'ac-modes 'gams-mode)
